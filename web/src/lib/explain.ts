@@ -13,6 +13,11 @@ export const HIGH_LIFT = 1.5;
 export const LOW_LIFT = 1 / HIGH_LIFT;
 /** Differences in attention share below this (percentage points) read as "similar". */
 export const SIMILAR_PP = 0.5;
+/**
+ * Mirroring, letterboxing, or downscaling the same ad moved a region's share by
+ * up to 1.85 points (docs/evaluation.md), so smaller differences are flagged.
+ */
+export const FRAMING_PP = 2;
 /** Area ratio above which lift, not raw share, is called out as the fairer comparison. */
 export const AREA_RATIO_NOTE = 1.5;
 
@@ -95,6 +100,11 @@ export function explainPair(pair: RegionPair, a: RegionScore, b: RegionScore): s
     parts.push(
       `B's receives ${Math.abs(diffPp).toFixed(1)} percentage points ${diffPp > 0 ? "more" : "less"} than A's.`,
     );
+    if (Math.abs(diffPp) < FRAMING_PP) {
+      parts.push(
+        "That is within the range that reframing the same ad (mirroring, padding, or resizing) changed scores in our evaluation, so treat it as no clear difference.",
+      );
+    }
   }
   const ratio = Math.max(a.areaFraction, b.areaFraction) / Math.min(a.areaFraction, b.areaFraction);
   if (ratio > AREA_RATIO_NOTE) {

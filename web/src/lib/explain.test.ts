@@ -39,6 +39,15 @@ describe("explainPair", () => {
     const text = explainPair({ a: cta, b, automatic: true }, s, { ...s, attentionMass: 0.052 });
     expect(text).toContain("similar");
   });
+
+  it("flags differences smaller than the measured framing sensitivity", () => {
+    const s = { areaFraction: 0.05, attentionMass: 0.05, lift: 1 };
+    const small = explainPair({ a: cta, b, automatic: true }, s, { ...s, attentionMass: 0.065 });
+    expect(small).toContain("1.5 percentage points more");
+    expect(small).toContain("no clear difference");
+    const large = explainPair({ a: cta, b, automatic: true }, s, { ...s, attentionMass: 0.08 });
+    expect(large).not.toContain("no clear difference");
+  });
 });
 
 describe("explainImage", () => {

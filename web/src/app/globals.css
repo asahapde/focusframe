@@ -436,6 +436,28 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.limits {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  max-width: 90ch;
+  font-size: 0.925rem;
+  color: var(--muted);
+}
+
+.limits h2 {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+}
+
+.limits ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
 .findings {
   margin: 0;
   padding-left: 1.2rem;

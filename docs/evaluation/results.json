@@ -1,0 +1,440 @@
+{
+  "run_at": "2026-09-28T12:14:15-0400",
+  "model_version": "deepgaze_pytorch@c7db17e2+deepgaze2e.pth:sha256-49b65724184f",
+  "environment": {
+    "python": "3.10.7",
+    "torch": "2.7.1+cu126",
+    "os": "Windows-10-10.0.19045-SP0",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "cpu_threads": 6
+  },
+  "load_seconds_gpu": 4.2,
+  "load_seconds_cpu": 1.9,
+  "reproducibility": {
+    "layout-a": {
+      "density_shape": [
+        536,
+        1024
+      ],
+      "grid_shape": [
+        67,
+        128
+      ],
+      "finite_nonnegative": true,
+      "density_sum_minus_1": -1.1102230246251565e-16,
+      "grid_float32_sum_minus_1": -5.477929221342492e-10,
+      "gpu_repeat_max_abs_diff": 0.0,
+      "cpu_repeat_max_abs_diff": 0.0,
+      "gpu_vs_cpu_max_rel_diff": 0.0006476008416264978,
+      "gpu_vs_cpu_corr": 1.0,
+      "gpu_vs_cpu_max_region_attention_diff": 2.5392911344956914e-05,
+      "peak_over_mean": 14.61,
+      "entropy_over_uniform": 0.9039
+    },
+    "layout-b": {
+      "density_shape": [
+        536,
+        1024
+      ],
+      "grid_shape": [
+        67,
+        128
+      ],
+      "finite_nonnegative": true,
+      "density_sum_minus_1": -1.1102230246251565e-16,
+      "grid_float32_sum_minus_1": -2.220517103523889e-10,
+      "gpu_repeat_max_abs_diff": 0.0,
+      "cpu_repeat_max_abs_diff": 0.0,
+      "gpu_vs_cpu_max_rel_diff": 0.0003470770785228361,
+      "gpu_vs_cpu_corr": 1.0,
+      "gpu_vs_cpu_max_region_attention_diff": 5.621881270023721e-05,
+      "peak_over_mean": 18.56,
+      "entropy_over_uniform": 0.8852
+    }
+  },
+  "figures": {
+    "layout-a": "docs/evaluation/layout-a.png",
+    "layout-b": "docs/evaluation/layout-b.png",
+    "letterbox": "docs/evaluation/letterbox.png",
+    "dense_text": "docs/evaluation/dense_text.png",
+    "schematic_face": "docs/evaluation/schematic_face.png",
+    "blank": "docs/evaluation/blank.png"
+  },
+  "region_scores": {
+    "layout-a": {
+      "logo": {
+        "area": 0.0142,
+        "attention": 0.0216,
+        "lift": 1.522
+      },
+      "headline": {
+        "area": 0.1049,
+        "attention": 0.3682,
+        "lift": 3.511
+      },
+      "product": {
+        "area": 0.1064,
+        "attention": 0.1266,
+        "lift": 1.19
+      },
+      "cta": {
+        "area": 0.0099,
+        "attention": 0.0117,
+        "lift": 1.178
+      }
+    },
+    "layout-b": {
+      "logo": {
+        "area": 0.0142,
+        "attention": 0.0225,
+        "lift": 1.585
+      },
+      "headline": {
+        "area": 0.0533,
+        "attention": 0.2337,
+        "lift": 4.382
+      },
+      "product": {
+        "area": 0.1064,
+        "attention": 0.0569,
+        "lift": 0.535
+      },
+      "cta": {
+        "area": 0.0379,
+        "attention": 0.238,
+        "lift": 6.279
+      }
+    }
+  },
+  "grid_vs_full_resolution_max_abs_attention_diff": 0.0006290635899909025,
+  "layout_a_vs_b_density_corr": -0.016,
+  "probes": {
+    "mirror_corr": 0.9808,
+    "mirror_cta": {
+      "original": {
+        "area": 0.0379,
+        "attention": 0.238,
+        "lift": 6.279
+      },
+      "mirrored": {
+        "area": 0.0379,
+        "attention": 0.2525,
+        "lift": 6.663
+      }
+    },
+    "letterbox_square": {
+      "attention_inside_ad_band": 0.9919,
+      "cta_attention_share_of_ad": 0.2195,
+      "headline_attention_share_of_ad": 0.2486,
+      "original_cta_attention": 0.238,
+      "original_headline_attention": 0.2337
+    },
+    "low_resolution_300px": {
+      "logo": {
+        "original": {
+          "area": 0.0142,
+          "attention": 0.0225,
+          "lift": 1.585
+        },
+        "downscaled": {
+          "area": 0.0142,
+          "attention": 0.0275,
+          "lift": 1.931
+        }
+      },
+      "headline": {
+        "original": {
+          "area": 0.0533,
+          "attention": 0.2337,
+          "lift": 4.382
+        },
+        "downscaled": {
+          "area": 0.0533,
+          "attention": 0.2478,
+          "lift": 4.646
+        }
+      },
+      "product": {
+        "original": {
+          "area": 0.1064,
+          "attention": 0.0569,
+          "lift": 0.535
+        },
+        "downscaled": {
+          "area": 0.1064,
+          "attention": 0.0537,
+          "lift": 0.505
+        }
+      },
+      "cta": {
+        "original": {
+          "area": 0.0379,
+          "attention": 0.238,
+          "lift": 6.279
+        },
+        "downscaled": {
+          "area": 0.0379,
+          "attention": 0.2282,
+          "lift": 6.021
+        }
+      }
+    },
+    "dense_text": {
+      "region": {
+        "area": 0.084,
+        "attention": 0.0221,
+        "lift": 0.263
+      },
+      "cta": {
+        "area": 0.0379,
+        "attention": 0.237,
+        "lift": 6.254
+      },
+      "cta_without_addition": {
+        "area": 0.0379,
+        "attention": 0.238,
+        "lift": 6.279
+      }
+    },
+    "schematic_face": {
+      "region": {
+        "area": 0.026,
+        "attention": 0.012,
+        "lift": 0.463
+      },
+      "cta": {
+        "area": 0.0379,
+        "attention": 0.2365,
+        "lift": 6.242
+      },
+      "cta_without_addition": {
+        "area": 0.0379,
+        "attention": 0.238,
+        "lift": 6.279
+      }
+    },
+    "blank_image": {
+      "central_quarter_attention": 0.5487,
+      "corner_cta_sized_box_lift": 0.318,
+      "peak_over_mean": 8.7,
+      "bottom_5pct_rows_attention": 0.1254,
+      "peak_location_xy": [
+        0.833,
+        0.997
+      ]
+    }
+  },
+  "performance": {
+    "300x250 medium rectangle": {
+      "upload_kib": 21,
+      "response_kib": 177,
+      "heatmap_kib": 105,
+      "density_kib": 71,
+      "grid": [
+        128,
+        107
+      ],
+      "api_end_to_end_gpu_median_ms": 935,
+      "gpu": {
+        "model_input": [
+          1024,
+          853
+        ],
+        "median_ms": 752.2,
+        "min_ms": 751.3,
+        "max_ms": 756.9,
+        "runs": 5,
+        "peak_cuda_mib": 776,
+        "peak_process_rss_mib": 2410
+      },
+      "cpu": {
+        "model_input": [
+          1024,
+          853
+        ],
+        "median_ms": 2075.8,
+        "min_ms": 2036.3,
+        "max_ms": 2115.4,
+        "runs": 2,
+        "peak_cuda_mib": null,
+        "peak_process_rss_mib": 2514
+      }
+    },
+    "728x90 leaderboard": {
+      "upload_kib": 23,
+      "response_kib": 47,
+      "heatmap_kib": 35,
+      "density_kib": 11,
+      "grid": [
+        128,
+        16
+      ],
+      "api_end_to_end_gpu_median_ms": 357,
+      "gpu": {
+        "model_input": [
+          1024,
+          127
+        ],
+        "median_ms": 324.1,
+        "min_ms": 320.7,
+        "max_ms": 338.5,
+        "runs": 5,
+        "peak_cuda_mib": 474,
+        "peak_process_rss_mib": 2481
+      },
+      "cpu": {
+        "model_input": [
+          1024,
+          127
+        ],
+        "median_ms": 544.6,
+        "min_ms": 542.4,
+        "max_ms": 546.8,
+        "runs": 2,
+        "peak_cuda_mib": null,
+        "peak_process_rss_mib": 2502
+      }
+    },
+    "1200x628 link ad": {
+      "upload_kib": 27,
+      "response_kib": 129,
+      "heatmap_kib": 83,
+      "density_kib": 45,
+      "grid": [
+        128,
+        67
+      ],
+      "api_end_to_end_gpu_median_ms": 650,
+      "gpu": {
+        "model_input": [
+          1024,
+          536
+        ],
+        "median_ms": 550.2,
+        "min_ms": 550.0,
+        "max_ms": 552.7,
+        "runs": 5,
+        "peak_cuda_mib": 646,
+        "peak_process_rss_mib": 2524
+      },
+      "cpu": {
+        "model_input": [
+          1024,
+          536
+        ],
+        "median_ms": 1475.2,
+        "min_ms": 1437.5,
+        "max_ms": 1512.9,
+        "runs": 2,
+        "peak_cuda_mib": null,
+        "peak_process_rss_mib": 2539
+      }
+    },
+    "1080x1080 square": {
+      "upload_kib": 119,
+      "response_kib": 193,
+      "heatmap_kib": 106,
+      "density_kib": 85,
+      "grid": [
+        128,
+        128
+      ],
+      "api_end_to_end_gpu_median_ms": 1178,
+      "gpu": {
+        "model_input": [
+          1024,
+          1024
+        ],
+        "median_ms": 895.9,
+        "min_ms": 859.6,
+        "max_ms": 923.8,
+        "runs": 5,
+        "peak_cuda_mib": 845,
+        "peak_process_rss_mib": 2572
+      },
+      "cpu": {
+        "model_input": [
+          1024,
+          1024
+        ],
+        "median_ms": 2531.1,
+        "min_ms": 2517.9,
+        "max_ms": 2544.4,
+        "runs": 2,
+        "peak_cuda_mib": null,
+        "peak_process_rss_mib": 2827
+      }
+    },
+    "1080x1920 story": {
+      "upload_kib": 183,
+      "response_kib": 124,
+      "heatmap_kib": 74,
+      "density_kib": 48,
+      "grid": [
+        72,
+        128
+      ],
+      "api_end_to_end_gpu_median_ms": 682,
+      "gpu": {
+        "model_input": [
+          576,
+          1024
+        ],
+        "median_ms": 558.7,
+        "min_ms": 555.1,
+        "max_ms": 560.0,
+        "runs": 5,
+        "peak_cuda_mib": 661,
+        "peak_process_rss_mib": 2560
+      },
+      "cpu": {
+        "model_input": [
+          576,
+          1024
+        ],
+        "median_ms": 1474.0,
+        "min_ms": 1433.3,
+        "max_ms": 1514.6,
+        "runs": 2,
+        "peak_cuda_mib": null,
+        "peak_process_rss_mib": 2569
+      }
+    },
+    "4000x5000 (20 MP) photo": {
+      "upload_kib": 550,
+      "response_kib": 166,
+      "heatmap_kib": 97,
+      "density_kib": 68,
+      "grid": [
+        102,
+        128
+      ],
+      "api_end_to_end_gpu_median_ms": 1078,
+      "gpu": {
+        "model_input": [
+          819,
+          1024
+        ],
+        "median_ms": 722.8,
+        "min_ms": 720.5,
+        "max_ms": 724.2,
+        "runs": 5,
+        "peak_cuda_mib": 763,
+        "peak_process_rss_mib": 2655
+      },
+      "cpu": {
+        "model_input": [
+          819,
+          1024
+        ],
+        "median_ms": 1934.5,
+        "min_ms": 1931.1,
+        "max_ms": 1937.9,
+        "runs": 2,
+        "peak_cuda_mib": null,
+        "peak_process_rss_mib": 2666
+      }
+    }
+  }
+}
