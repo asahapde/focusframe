@@ -1,0 +1,5 @@
+The MIT License in LICENSE covers the FocusFrame source code in this repository
+only. It does not cover DeepGaze IIE, its weights, or the backbone checkpoints
+that its code downloads. Those are third-party works under their own terms, and
+the upstream DeepGaze repository declares no license. They are not included in
+this repository. See docs/model-and-license.md.
