@@ -8,6 +8,14 @@ FocusFrame shows where a pretrained eye-movement model predicts people will look
 
 ![Two-ad comparison with heatmaps and marked regions](docs/screenshots/focusframe-comparison-top.png)
 
+**Highlights**
+
+- A full-stack app with a Next.js/TypeScript frontend and a FastAPI/PyTorch backend. The two share one typed API contract, generated from Pydantic, and tests fail if it drifts.
+- Real model inference: a pinned, checksum-verified DeepGaze IIE, deterministic on both CPU and GPU. It returns a numeric density grid that the browser scores. Scores never come from heatmap colors.
+- Region scoring uses fractional-overlap math and normalized coordinates, so scores stay the same at any display size. Regions can be drawn with the pointer or entered as accessible numeric inputs.
+- Uploads are hardened: magic-byte checks, decompression-bomb limits, and EXIF handling. Nothing is stored, and errors are typed.
+- An honest evaluation: a reproducible benchmark script, measured latency and memory, and documented failure cases, with no accuracy claims.
+
 ![Side-by-side region comparison and explanations](docs/screenshots/focusframe-comparison-table.png)
 
 ## What the model predicts, and what it does not
@@ -158,6 +166,10 @@ api\.venv\Scripts\python api\scripts\evaluate.py
 - GPU inference is serialized, so concurrent requests queue.
 - Regions are manual rectangles only.
 - The browser analyses are lost on refresh.
+
+## License
+
+The FocusFrame code is released under the [MIT License](LICENSE). That license does not extend to DeepGaze IIE or its weights; see [Model attribution and license](#model-attribution-and-license).
 
 ## Planned improvements and deployment notes
 
