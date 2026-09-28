@@ -1,0 +1,104 @@
+{
+  "samples": [
+    {
+      "id": "layout-a",
+      "title": "Layout A: corner CTA",
+      "src": "/samples/layout-a.png",
+      "filename": "layout-a.png",
+      "width": 1200,
+      "height": 628,
+      "regions": [
+        {
+          "label": "logo",
+          "name": "Brand",
+          "rect": {
+            "x": 0.05,
+            "y": 0.070064,
+            "width": 0.194167,
+            "height": 0.073248
+          }
+        },
+        {
+          "label": "headline",
+          "name": "Headline",
+          "rect": {
+            "x": 0.045,
+            "y": 0.234076,
+            "width": 0.414167,
+            "height": 0.253185
+          }
+        },
+        {
+          "label": "product",
+          "name": "Bottle",
+          "rect": {
+            "x": 0.678333,
+            "y": 0.175159,
+            "width": 0.143333,
+            "height": 0.742038
+          }
+        },
+        {
+          "label": "cta",
+          "name": "Shop now button",
+          "rect": {
+            "x": 0.051667,
+            "y": 0.859873,
+            "width": 0.141667,
+            "height": 0.070064
+          }
+        }
+      ]
+    },
+    {
+      "id": "layout-b",
+      "title": "Layout B: prominent CTA",
+      "src": "/samples/layout-b.png",
+      "filename": "layout-b.png",
+      "width": 1200,
+      "height": 628,
+      "regions": [
+        {
+          "label": "logo",
+          "name": "Brand",
+          "rect": {
+            "x": 0.433333,
+            "y": 0.095541,
+            "width": 0.194167,
+            "height": 0.073248
+          }
+        },
+        {
+          "label": "headline",
+          "name": "Headline",
+          "rect": {
+            "x": 0.428333,
+            "y": 0.259554,
+            "width": 0.531667,
+            "height": 0.100318
+          }
+        },
+        {
+          "label": "product",
+          "name": "Bottle",
+          "rect": {
+            "x": 0.145,
+            "y": 0.175159,
+            "width": 0.143333,
+            "height": 0.742038
+          }
+        },
+        {
+          "label": "cta",
+          "name": "Shop now button",
+          "rect": {
+            "x": 0.433333,
+            "y": 0.525478,
+            "width": 0.283333,
+            "height": 0.133758
+          }
+        }
+      ]
+    }
+  ]
+}

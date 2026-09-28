@@ -1,0 +1,270 @@
+:root {
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --border: #d6dadf;
+  --text: #1d2327;
+  --muted: #5b6770;
+  --accent: #1c6f80;
+  --accent-strong: #135462;
+  --error-bg: #fdecea;
+  --error-text: #8a1c12;
+  --ok-bg: #e8f4ee;
+  --ok-text: #1d5b3a;
+  --focus: #e0761f;
+  --radius: 8px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.file-input:focus-visible + label {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem clamp(0.75rem, 3vw, 2rem) 3rem;
+}
+
+.masthead__title {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.masthead__lede {
+  margin: 0.25rem 0 0.75rem;
+  max-width: 70ch;
+}
+
+.disclaimer {
+  margin: 0 0 1.25rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid var(--focus);
+  background: #fff6ee;
+  max-width: 90ch;
+  font-size: 0.925rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.toolbar__hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.slot {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-width: 0;
+}
+
+.slot__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.slot__title {
+  margin: 0;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.slot__filename {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 22ch;
+}
+
+.slot__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.button,
+.select {
+  font: inherit;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.button:hover {
+  border-color: var(--accent);
+}
+
+.button--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.button--primary:hover {
+  background: var(--accent-strong);
+}
+
+.button--ghost {
+  background: transparent;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  background: #eceff1;
+  border-radius: 4px;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+}
+
+.stage__image,
+.stage__heatmap {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stage__heatmap {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  pointer-events: none;
+  image-rendering: auto;
+}
+
+.stage__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+.status {
+  margin-top: 0.75rem;
+}
+
+.notice {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  background: #eef1f3;
+  font-size: 0.9rem;
+}
+
+.notice p {
+  margin: 0 0 0.35rem;
+}
+
+.notice--error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.notice--ok {
+  background: var(--ok-bg);
+  color: var(--ok-text);
+}
+
+.spinner {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.4em;
+  vertical-align: -0.1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.4s;
+  }
+}
