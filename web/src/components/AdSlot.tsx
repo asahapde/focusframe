@@ -91,6 +91,16 @@ export function AdSlot(props: Props) {
         <div className="stage">
           {/* eslint-disable-next-line @next/next/no-img-element -- local object URL preview */}
           <img className="stage__image" src={creative.objectUrl} alt={`Ad ${slot} preview`} />
+          {analysis.status === "done" && (
+            // eslint-disable-next-line @next/next/no-img-element -- API-generated data URL
+            <img
+              className="stage__heatmap"
+              src={analysis.analysis.heatmap.data_url}
+              alt=""
+              aria-hidden="true"
+              style={{ opacity: 0.7 }}
+            />
+          )}
         </div>
       )}
 
@@ -120,8 +130,13 @@ function AnalysisStatus({ analysis, onRetry }: { analysis: AnalysisState; onRetr
       )}
       {analysis.status === "done" && (
         <p className="notice notice--ok">
-          Analysis ready: {analysis.analysis.model.name} ({analysis.analysis.image.width}×
-          {analysis.analysis.image.height} px)
+          Predicted by{" "}
+          <a href={analysis.analysis.model.source_url} target="_blank" rel="noreferrer">
+            {analysis.analysis.model.name}
+          </a>{" "}
+          on {analysis.analysis.image.width}×{analysis.analysis.image.height} px in{" "}
+          {Math.round(analysis.analysis.processing.inference_ms)} ms (
+          {analysis.analysis.processing.device}).
         </p>
       )}
     </div>

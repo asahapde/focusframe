@@ -1,0 +1,455 @@
+{
+  "components": {
+    "schemas": {
+      "AnalysisResponse": {
+        "properties": {
+          "analysis_id": {
+            "title": "Analysis Id",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "UTC ISO 8601 timestamp.",
+            "title": "Created At",
+            "type": "string"
+          },
+          "density": {
+            "$ref": "#/components/schemas/DensityGrid"
+          },
+          "heatmap": {
+            "$ref": "#/components/schemas/Heatmap"
+          },
+          "image": {
+            "$ref": "#/components/schemas/ImageInfo"
+          },
+          "model": {
+            "$ref": "#/components/schemas/ModelInfo"
+          },
+          "processing": {
+            "$ref": "#/components/schemas/Processing"
+          },
+          "schema_version": {
+            "const": "1",
+            "title": "Schema Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "schema_version",
+          "analysis_id",
+          "created_at",
+          "model",
+          "image",
+          "density",
+          "heatmap",
+          "processing"
+        ],
+        "title": "AnalysisResponse",
+        "type": "object"
+      },
+      "Body_create_analysis_v1_analyses_post": {
+        "properties": {
+          "image": {
+            "contentMediaType": "application/octet-stream",
+            "title": "Image",
+            "type": "string"
+          }
+        },
+        "required": [
+          "image"
+        ],
+        "title": "Body_create_analysis_v1_analyses_post",
+        "type": "object"
+      },
+      "DensityGrid": {
+        "properties": {
+          "data": {
+            "description": "Base64 of width*height little-endian float32 probabilities.",
+            "title": "Data",
+            "type": "string"
+          },
+          "encoding": {
+            "const": "base64-float32-le",
+            "title": "Encoding",
+            "type": "string"
+          },
+          "height": {
+            "description": "Grid rows. Row r covers y in [r/height, (r+1)/height).",
+            "title": "Height",
+            "type": "integer"
+          },
+          "layout": {
+            "const": "row-major-top-left",
+            "title": "Layout",
+            "type": "string"
+          },
+          "sum": {
+            "description": "Sum of the decoded float32 values (1 up to float32 rounding).",
+            "title": "Sum",
+            "type": "number"
+          },
+          "width": {
+            "description": "Grid columns. Column c covers x in [c/width, (c+1)/width).",
+            "title": "Width",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "width",
+          "height",
+          "encoding",
+          "layout",
+          "data",
+          "sum"
+        ],
+        "title": "DensityGrid",
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "code": {
+            "enum": [
+              "invalid_request",
+              "invalid_image",
+              "payload_too_large",
+              "unsupported_media_type",
+              "invalid_dimensions",
+              "model_unavailable",
+              "inference_failed",
+              "internal_error",
+              "not_found"
+            ],
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "request_id": {
+            "title": "Request Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "request_id"
+        ],
+        "title": "ErrorResponse",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "properties": {
+          "model_ready": {
+            "title": "Model Ready",
+            "type": "boolean"
+          },
+          "status": {
+            "const": "ok",
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "model_ready"
+        ],
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "Heatmap": {
+        "properties": {
+          "color_scale": {
+            "const": "relative-to-image-max",
+            "title": "Color Scale",
+            "type": "string"
+          },
+          "colormap": {
+            "title": "Colormap",
+            "type": "string"
+          },
+          "data_url": {
+            "title": "Data Url",
+            "type": "string"
+          },
+          "height": {
+            "title": "Height",
+            "type": "integer"
+          },
+          "mime_type": {
+            "const": "image/png",
+            "title": "Mime Type",
+            "type": "string"
+          },
+          "width": {
+            "title": "Width",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "mime_type",
+          "data_url",
+          "width",
+          "height",
+          "color_scale",
+          "colormap"
+        ],
+        "title": "Heatmap",
+        "type": "object"
+      },
+      "ImageInfo": {
+        "properties": {
+          "height": {
+            "description": "Height in pixels after EXIF orientation was applied.",
+            "title": "Height",
+            "type": "integer"
+          },
+          "width": {
+            "description": "Width in pixels after EXIF orientation was applied.",
+            "title": "Width",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "width",
+          "height"
+        ],
+        "title": "ImageInfo",
+        "type": "object"
+      },
+      "ModelInfo": {
+        "properties": {
+          "citation": {
+            "title": "Citation",
+            "type": "string"
+          },
+          "license_note": {
+            "title": "License Note",
+            "type": "string"
+          },
+          "name": {
+            "description": "Model family, e.g. 'DeepGaze IIE'.",
+            "title": "Name",
+            "type": "string"
+          },
+          "source_url": {
+            "title": "Source Url",
+            "type": "string"
+          },
+          "version": {
+            "description": "Pinned code commit and weights hash identifier.",
+            "title": "Version",
+            "type": "string"
+          },
+          "weights_sha256": {
+            "title": "Weights Sha256",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "weights_sha256",
+          "source_url",
+          "citation",
+          "license_note"
+        ],
+        "title": "ModelInfo",
+        "type": "object"
+      },
+      "Processing": {
+        "properties": {
+          "alpha_composited_on_white": {
+            "title": "Alpha Composited On White",
+            "type": "boolean"
+          },
+          "centerbias": {
+            "title": "Centerbias",
+            "type": "string"
+          },
+          "device": {
+            "title": "Device",
+            "type": "string"
+          },
+          "exif_orientation": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exif Orientation"
+          },
+          "inference_ms": {
+            "title": "Inference Ms",
+            "type": "number"
+          },
+          "model_input_height": {
+            "title": "Model Input Height",
+            "type": "integer"
+          },
+          "model_input_width": {
+            "title": "Model Input Width",
+            "type": "integer"
+          },
+          "orientation_applied": {
+            "title": "Orientation Applied",
+            "type": "boolean"
+          },
+          "resampling": {
+            "title": "Resampling",
+            "type": "string"
+          },
+          "source_format": {
+            "enum": [
+              "PNG",
+              "JPEG"
+            ],
+            "title": "Source Format",
+            "type": "string"
+          },
+          "source_mode": {
+            "title": "Source Mode",
+            "type": "string"
+          },
+          "total_ms": {
+            "title": "Total Ms",
+            "type": "number"
+          }
+        },
+        "required": [
+          "orientation_applied",
+          "exif_orientation",
+          "source_format",
+          "source_mode",
+          "alpha_composited_on_white",
+          "model_input_width",
+          "model_input_height",
+          "resampling",
+          "centerbias",
+          "device",
+          "inference_ms",
+          "total_ms"
+        ],
+        "title": "Processing",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "description": "Predicted visual attention (DeepGaze IIE) for static PNG/JPEG ads.",
+    "title": "FocusFrame analysis API",
+    "version": "1"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/v1/analyses": {
+      "post": {
+        "operationId": "create_analysis_v1_analyses_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_create_analysis_v1_analyses_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unsupported Media Type"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Predict visual attention for one PNG/JPEG image"
+      }
+    }
+  }
+}

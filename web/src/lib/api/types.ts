@@ -1,28 +1,11 @@
-// Provisional contract (milestone 1). Replaced by types generated from the
-// FastAPI OpenAPI schema in milestone 2.
+// Stable names for the generated contract types. Regenerate with `npm run gen:api`
+// after `python -m focusframe_api.contract` updates contract/openapi.json.
+import type { components } from "./schema.gen";
 
-export type AnalysisResponse = {
-  schema_version: "1";
-  analysis_id: string;
-  model: { name: string; version: string };
-  image: { width: number; height: number };
-  density: {
-    width: number;
-    height: number;
-    encoding: "base64-float32-le";
-    data: string;
-    sum: number;
-  };
-  heatmap: { mime_type: "image/png"; data_url: string };
-  processing: {
-    orientation_applied: boolean;
-    model_input_width: number;
-    model_input_height: number;
-  };
-};
+type Schemas = components["schemas"];
 
-export type ErrorResponse = {
-  code: string;
-  message: string;
-  request_id: string;
-};
+export type AnalysisResponse = Schemas["AnalysisResponse"];
+export type DensityGrid = Schemas["DensityGrid"];
+export type ModelInfo = Schemas["ModelInfo"];
+export type ErrorResponse = Schemas["ErrorResponse"];
+export type HealthResponse = Schemas["HealthResponse"];
