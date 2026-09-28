@@ -22,3 +22,6 @@ web/.env.local
 
 # Evaluation scratch output
 api/eval-output/
+
+# Editable-install metadata
+*.egg-info/
