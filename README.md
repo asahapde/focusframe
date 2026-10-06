@@ -6,6 +6,10 @@ FocusFrame shows where a pretrained eye-movement model predicts people will look
 - Mark the brand, headline, product, and call to action.
 - See what share of the model's predicted attention falls inside each region, and how explicitly paired regions compare between two layouts.
 
+![FocusFrame demo](docs/screenshots/focusframe-demo.gif)
+
+[Watch the full demo](https://youtu.be/16WNrcHl-Rc).
+
 ![Two-ad comparison with heatmaps and marked regions](docs/screenshots/focusframe-comparison-top.png)
 
 **Highlights**
